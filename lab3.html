@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0">
+    <meta name="description" content="A webpage demonstrating HTML meta tags, image handling, and special characters as per Lab 3 instructions.">
+    <meta name="keywords" content="HTML, CSS, images, meta tags, Lab 3">
+    <meta name="author" content="ANIMESH AGARWAL">
+    
+    <title>LAB 3 Assignement</title>
+    
+    <style>
+        body 
+        {
+            font-family: sans-serif;
+            line-height: 1.4;
+            margin: 30px;
+        }
+        h1, h2, h3 
+        {
+            color: #334;
+        }
+        figure
+        {
+            border: 5px solid #ccc;
+            padding: 15px;
+            margin: 25px 0;
+            display: inline-block;
+        }
+        figcaption 
+        {
+            text-align: center;
+            font-style: italic;
+            margin-top: 5px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <h2>Lab 3 Demonstration</h2>
+
+    <h1>2. Special Characters (HTML Entities)</h1>
+    <p>
+        This section demonstrates special characters: &lt; (less than), &gt; (greater than), and &copy; (copyright).
+    </p>
+
+    <hr>
+
+    <h2>3. Inline CSS Styling for an Image</h2>
+    <p>
+        <img src="https://images.shiksha.com/mediadata/images/1632465297phpyUzixv.jpeg" 
+             alt="Styled Placeholder Image" 
+             style="width: 250px; height: 150px;">
+        This text wraps around the image because the image has a float: left style applied. We've also set its width, height using inline CSS within the style attribute.
+    </p>
+    <div style="clear:both;"></div>
+    <hr>
+
+    <h2>4. Image as a Hyperlink</h2>
+    <p>Click the image below to visit an external website.</p>
+    <a href="https://www.google.com" target="_blank">
+        <img src="https://images.shiksha.com/mediadata/images/1632465297phpyUzixv.jpeg" 
+             alt="A clickable placeholder image">
+    </a>    
+
+    <hr>
+
+    <h2>5. Lazy and Eager Loading</h2>
+    <p>This first image is set to load immediately (loading="eager").</p>
+    <img src="https://images.shiksha.com/mediadata/images/1632465297phpyUzixv.jpeg" alt="Eager Loading Image" loading="eager">
+    <p>Scroll down to see the lazy-loaded image. </p>
+    
+    <p>This image below is set to loading="lazy". You may notice it appear slightly after you scroll to it.</p>
+    <img src="https://images.shiksha.com/mediadata/images/1632465297phpyUzixv.jpeg" alt="Lazy Loading Image" loading="lazy">
+
+    <hr>
+
+    <h2>6. Background Image</h2>
+    <section style="background-image: url('https://images.shiksha.com/mediadata/images/1632465297phpyUzixv.jpeg'); background-size: cover; color: white; padding: 50px; text-shadow: 2px 2px 4px #000000; border-radius: 8px;">
+        <h3>Text Over a Background Image</h3>
+        <p>This entire section has a background image applied using inline CSS. The text is styled with a color and text-shadow to ensure it remains readable against the potentially complex background.</p>
+    </section>
+    <hr>
+
+    <h2>7. Responsive Images with &lt;picture&gt;</h2>
+    <p>Resize your browser window to see the image change. A different image source is loaded for different screen widths.</p>
+    <picture>
+        <source media="(min-width: 800px)" srcset="https://images.shiksha.com/mediadata/images/1632465297phpyUzixv.jpeg(>800px)">
+        <source media="(min-width: 500px)" srcset="https://images.shiksha.com/mediadata/images/1632465297phpyUzixv.jpeg(>500px)">
+        <img src="https://images.shiksha.com/mediadata/images/1632465297phpyUzixv.jpeg" alt="A responsive placeholder image">
+    </picture>
+
+    <hr>
+
+    <h2>8. Image with Figure and Figcaption</h2>
+    <figure>
+        <img src="https://images.shiksha.com/mediadata/images/1632465297phpyUzixv.jpeg" alt="DTU">
+        <figcaption>Fig.1 - A descriptive caption for the image above, provided using the figcaption element.</figcaption>
+    </figure>
+
+</body>
+</html>

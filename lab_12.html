@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Quick Survey & Feedback</title>
+<style>
+  :root{--accent:#2563eb;--muted:#f3f4f6;--card:#ffffff}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto;min-height:100vh;
+       display:grid;place-items:center;padding:20px;background:linear-gradient(180deg,#eef2ff,#fff)}
+  form{width:380px;background:var(--card);border-radius:12px;padding:18px;
+       box-shadow:0 6px 18px rgba(38,60,120,.08);border:1px solid rgba(37,99,235,.06);
+       display:grid;gap:12px;transform:translateY(0);transition:transform .25s ease}
+  form:hover{transform:translateY(-6px) rotate(-0.25deg)}
+  h2{margin:0 0 4px;font-size:18px;color:#0f172a}
+  .row{display:flex;gap:10px}
+  label{font-size:13px;color:#334155}
+  input[type="text"],input[type="email"],input[type="number"],select,textarea{
+    width:100%;padding:8px 10px;border:1px solid #e6e9ef;border-radius:8px;
+    background:var(--muted);resize:vertical;transition:box-shadow .18s,transform .12s}
+  input:focus,textarea:focus,select:focus{box-shadow:0 4px 14px rgba(37,99,235,.08);outline:none;transform:scale(1.01)}
+  .gender{align-items:center;gap:8px}
+  .chips{display:flex;gap:8px;flex-wrap:wrap}
+  .chip{padding:6px 10px;border-radius:999px;border:1px dashed #c7d2fe;font-size:13px;cursor:pointer;
+        transition:background .18s,transform .12s}
+  .chip:hover{background:#eef2ff;transform:translateY(-3px)}
+  .rating{display:flex;gap:6px;justify-content:space-between}
+  .rating input[type="radio"]{display:none}
+  .rating label{flex:1;text-align:center;padding:6px 0;border-radius:8px;border:1px solid transparent;
+                cursor:pointer;transition:background .12s,transform .12s}
+  .rating input[type="radio"]:checked+label{background:var(--accent);color:#fff;transform:scale(1.04)}
+  textarea{min-height:80px}
+  .actions{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .btn{padding:8px 14px;border-radius:10px;border:none;background:var(--accent);color:#fff;cursor:pointer;
+       transition:transform .12s,box-shadow .12s}
+  .btn:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(37,99,235,.18)}
+  .secondary{background:transparent;color:var(--accent);border:1px solid rgba(37,99,235,.12)}
+  small{color:#64748b}
+</style>
+</head>
+<body>
+<form onsubmit="event.preventDefault(); alert('Thanks — response recorded!');">
+  <h2>Quick Survey & Feedback</h2>
+
+  <div class="row">
+    <div style="flex:1">
+      <label>Name <input type="text" name="name" placeholder="Your name" required></label>
+    </div>
+    <div style="flex:1">
+      <label>Age <input type="number" name="age" min="8" max="120" placeholder="Age" required></label>
+    </div>
+  </div>
+
+  <label>Email <input type="email" name="email" placeholder="you@example.com" required></label>
+
+  <div class="row gender">
+    <label style="flex:1">Gender
+      <select name="gender" required>
+        <option value="" disabled selected>Choose</option>
+        <option>Female</option><option>Male</option><option>Non-binary</option><option>Prefer not to say</option>
+      </select>
+    </label>
+
+    <label style="flex:1">Overall rating
+      <div class="rating" aria-label="rating">
+        <input id="r1" type="radio" name="rate" value="1" required><label for="r1">1</label>
+        <input id="r2" type="radio" name="rate" value="2"><label for="r2">2</label>
+        <input id="r3" type="radio" name="rate" value="3"><label for="r3">3</label>
+        <input id="r4" type="radio" name="rate" value="4"><label for="r4">4</label>
+        <input id="r5" type="radio" name="rate" value="5"><label for="r5">5</label>
+      </div>
+    </label>
+  </div>
+
+  <div>
+    <label>Which features did you use? <small>(choose all that apply)</small></label>
+    <div class="chips" role="group" aria-label="features">
+      <label class="chip"><input type="checkbox" name="feat" value="Search" hidden>Search</label>
+      <label class="chip"><input type="checkbox" name="feat" value="Checkout" hidden>Checkout</label>
+      <label class="chip"><input type="checkbox" name="feat" value="Profile" hidden>Profile</label>
+      <label class="chip"><input type="checkbox" name="feat" value="Support" hidden>Support</label>
+    </div>
+  </div>
+
+  <label>Feedback / Experience
+    <textarea name="comments" placeholder="Tell us about your experience..." maxlength="1000"></textarea>
+  </label>
+
+  <div class="actions">
+    <button class="btn secondary" type="reset">Reset</button>
+    <button class="btn" type="submit">Submit</button>
+  </div>
+  <small>By submitting you agree to our <u>terms</u>.</small>
+</form>
+
+<script>
+  // small UX: toggle visual chip state
+  document.querySelectorAll('.chip').forEach(ch=>{
+    ch.addEventListener('click',e=>{
+      const cb = ch.querySelector('input[type="checkbox"]');
+      cb.checked = !cb.checked;
+      ch.style.background = cb.checked ? 'linear-gradient(90deg,#e0f2ff,#eef9ff)' : '';
+      ch.style.borderStyle = cb.checked ? 'solid' : 'dashed';
+      ch.style.transform = cb.checked ? 'translateY(-3px)' : '';
+    });
+  });
+</script>
+</body>
+</html>
